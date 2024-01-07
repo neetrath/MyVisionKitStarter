@@ -31,6 +31,7 @@
 		7EC707902B4ACF2A00EA0DFF /* OCRViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7EC7078F2B4ACF2A00EA0DFF /* OCRViewController.swift */; };
 		7EC707922B4ACF8800EA0DFF /* CardOCRWrapper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7EC707912B4ACF8800EA0DFF /* CardOCRWrapper.swift */; };
 		7EC707942B4AD1FE00EA0DFF /* OCRViewController+Flash.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7EC707932B4AD1FE00EA0DFF /* OCRViewController+Flash.swift */; };
+		7EC707982B4AD2F100EA0DFF /* OCRViewController+Overlay.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7EC707972B4AD2F100EA0DFF /* OCRViewController+Overlay.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -60,6 +61,7 @@
 		7EC7078F2B4ACF2A00EA0DFF /* OCRViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = OCRViewController.swift; sourceTree = "<group>"; };
 		7EC707912B4ACF8800EA0DFF /* CardOCRWrapper.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CardOCRWrapper.swift; sourceTree = "<group>"; };
 		7EC707932B4AD1FE00EA0DFF /* OCRViewController+Flash.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "OCRViewController+Flash.swift"; sourceTree = "<group>"; };
+		7EC707972B4AD2F100EA0DFF /* OCRViewController+Overlay.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "OCRViewController+Overlay.swift"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -205,6 +207,7 @@
 			children = (
 				7EC7078F2B4ACF2A00EA0DFF /* OCRViewController.swift */,
 				7EC707932B4AD1FE00EA0DFF /* OCRViewController+Flash.swift */,
+				7EC707972B4AD2F100EA0DFF /* OCRViewController+Overlay.swift */,
 			);
 			path = UIKit;
 			sourceTree = "<group>";
@@ -311,6 +314,7 @@
 				7EC7076E2B4ABAF800EA0DFF /* HomeView.swift in Sources */,
 				7EC7077D2B4ABAF800EA0DFF /* Insurance.swift in Sources */,
 				7EC707502B4ABA9200EA0DFF /* String+Trim.swift in Sources */,
+				7EC707982B4AD2F100EA0DFF /* OCRViewController+Overlay.swift in Sources */,
 				7EC7078D2B4ACC6700EA0DFF /* OCRConfiguration.swift in Sources */,
 				7EC707702B4ABAF800EA0DFF /* ResultView.swift in Sources */,
 				7EC7074D2B4ABA9200EA0DFF /* UIButton+Background.swift in Sources */,

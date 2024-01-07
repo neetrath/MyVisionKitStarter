@@ -9,6 +9,10 @@ class OCRViewController: UIViewController {
 
     // Video display layer
     lazy var previewLayer = AVCaptureVideoPreviewLayer(session: self.captureSession)
+    var maskLayer = CAShapeLayer()
+    let citizenCardLayer = CAShapeLayer()
+    let photoFrameLayer = CAShapeLayer()
+    let circleLayer = CAShapeLayer()
 
     var configuration: OCRConfiguration = .init()
     var isAllowCapture = false
@@ -51,8 +55,7 @@ class OCRViewController: UIViewController {
         showCameraFeed()
         setCameraOutput()
 
-        // TODO: Add overlay.
-        // addRectangleOverlay()
+        addRectangleOverlay()
     }
 
     private func setupView() {
