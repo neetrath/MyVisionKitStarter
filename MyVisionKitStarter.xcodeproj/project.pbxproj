@@ -30,6 +30,7 @@
 		7EC7078D2B4ACC6700EA0DFF /* OCRConfiguration.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7EC707892B4ACC6700EA0DFF /* OCRConfiguration.swift */; };
 		7EC707902B4ACF2A00EA0DFF /* OCRViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7EC7078F2B4ACF2A00EA0DFF /* OCRViewController.swift */; };
 		7EC707922B4ACF8800EA0DFF /* CardOCRWrapper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7EC707912B4ACF8800EA0DFF /* CardOCRWrapper.swift */; };
+		7EC707942B4AD1FE00EA0DFF /* OCRViewController+Flash.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7EC707932B4AD1FE00EA0DFF /* OCRViewController+Flash.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -58,6 +59,7 @@
 		7EC707892B4ACC6700EA0DFF /* OCRConfiguration.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = OCRConfiguration.swift; sourceTree = "<group>"; };
 		7EC7078F2B4ACF2A00EA0DFF /* OCRViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = OCRViewController.swift; sourceTree = "<group>"; };
 		7EC707912B4ACF8800EA0DFF /* CardOCRWrapper.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CardOCRWrapper.swift; sourceTree = "<group>"; };
+		7EC707932B4AD1FE00EA0DFF /* OCRViewController+Flash.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "OCRViewController+Flash.swift"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -202,6 +204,7 @@
 			isa = PBXGroup;
 			children = (
 				7EC7078F2B4ACF2A00EA0DFF /* OCRViewController.swift */,
+				7EC707932B4AD1FE00EA0DFF /* OCRViewController+Flash.swift */,
 			);
 			path = UIKit;
 			sourceTree = "<group>";
@@ -320,6 +323,7 @@
 				7EC7074F2B4ABA9200EA0DFF /* Collection+Safe.swift in Sources */,
 				7EC707712B4ABAF800EA0DFF /* ResultViewModel.swift in Sources */,
 				7EC707902B4ACF2A00EA0DFF /* OCRViewController.swift in Sources */,
+				7EC707942B4AD1FE00EA0DFF /* OCRViewController+Flash.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

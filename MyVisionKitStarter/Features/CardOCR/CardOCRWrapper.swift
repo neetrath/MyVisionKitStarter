@@ -17,5 +17,10 @@ struct CardOCRWrapper: UIViewControllerRepresentable {
     }
 
     func updateUIViewController(_ uiViewController: OCRViewController, context: Context) {
+        if isFlashOn {
+            uiViewController.turnOnTorch()
+        } else {
+            uiViewController.turnOffTorch()
+        }
     }
 }
