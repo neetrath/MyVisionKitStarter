@@ -20,14 +20,10 @@ struct CardOCRView: View {
 
     var body: some View {
         ZStack(alignment: .top) {
-            // TODO: Replace with the OCR Wrapper
-            Button {
-                self.onFinish(.result(values: [.init(key: "Key1", value: "Value1"),
-                                               .init(key: "Key2", value: "Value2")]))
-            } label: {
-                Text("See the result")
-            }
-            .buttonStyle(.borderedProminent)
+            CardOCRWrapper(configuration: viewModel.configuration,
+                           delegate: viewModel, 
+                           isFlashOn: $isFlashOn,
+                           isAutoCapture: $isAutoCapture)
 
             if viewModel.state == .loading {
                 Rectangle()

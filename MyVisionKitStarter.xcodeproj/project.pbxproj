@@ -28,6 +28,8 @@
 		7EC7078B2B4ACC6700EA0DFF /* OCRCaptureState.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7EC707852B4ACC6700EA0DFF /* OCRCaptureState.swift */; };
 		7EC7078C2B4ACC6700EA0DFF /* OCRDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7EC707872B4ACC6700EA0DFF /* OCRDelegate.swift */; };
 		7EC7078D2B4ACC6700EA0DFF /* OCRConfiguration.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7EC707892B4ACC6700EA0DFF /* OCRConfiguration.swift */; };
+		7EC707902B4ACF2A00EA0DFF /* OCRViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7EC7078F2B4ACF2A00EA0DFF /* OCRViewController.swift */; };
+		7EC707922B4ACF8800EA0DFF /* CardOCRWrapper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7EC707912B4ACF8800EA0DFF /* CardOCRWrapper.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -54,6 +56,8 @@
 		7EC707852B4ACC6700EA0DFF /* OCRCaptureState.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = OCRCaptureState.swift; sourceTree = "<group>"; };
 		7EC707872B4ACC6700EA0DFF /* OCRDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = OCRDelegate.swift; sourceTree = "<group>"; };
 		7EC707892B4ACC6700EA0DFF /* OCRConfiguration.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = OCRConfiguration.swift; sourceTree = "<group>"; };
+		7EC7078F2B4ACF2A00EA0DFF /* OCRViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = OCRViewController.swift; sourceTree = "<group>"; };
+		7EC707912B4ACF8800EA0DFF /* CardOCRWrapper.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CardOCRWrapper.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -151,10 +155,12 @@
 			children = (
 				7EC7075C2B4ABAF800EA0DFF /* CardOCRView.swift */,
 				7EC707692B4ABAF800EA0DFF /* CardOCRViewModel.swift */,
+				7EC707912B4ACF8800EA0DFF /* CardOCRWrapper.swift */,
 				7EC7076A2B4ABAF800EA0DFF /* CardType */,
 				7EC707882B4ACC6700EA0DFF /* Configuration */,
 				7EC707832B4ACC6700EA0DFF /* Enums */,
 				7EC707862B4ACC6700EA0DFF /* Protocols */,
+				7EC7078E2B4ACF2A00EA0DFF /* UIKit */,
 			);
 			path = CardOCR;
 			sourceTree = "<group>";
@@ -190,6 +196,14 @@
 				7EC707892B4ACC6700EA0DFF /* OCRConfiguration.swift */,
 			);
 			path = Configuration;
+			sourceTree = "<group>";
+		};
+		7EC7078E2B4ACF2A00EA0DFF /* UIKit */ = {
+			isa = PBXGroup;
+			children = (
+				7EC7078F2B4ACF2A00EA0DFF /* OCRViewController.swift */,
+			);
+			path = UIKit;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -288,6 +302,7 @@
 				7EC7078B2B4ACC6700EA0DFF /* OCRCaptureState.swift in Sources */,
 				7EC7078C2B4ACC6700EA0DFF /* OCRDelegate.swift in Sources */,
 				7EC707722B4ABAF800EA0DFF /* CardOCRView.swift in Sources */,
+				7EC707922B4ACF8800EA0DFF /* CardOCRWrapper.swift in Sources */,
 				7EC707522B4ABA9200EA0DFF /* MainCoordinator.swift in Sources */,
 				7EC7074C2B4ABA9200EA0DFF /* CGPoint+Scale.swift in Sources */,
 				7EC7076E2B4ABAF800EA0DFF /* HomeView.swift in Sources */,
@@ -304,6 +319,7 @@
 				7EC707512B4ABA9200EA0DFF /* PresentationStyle.swift in Sources */,
 				7EC7074F2B4ABA9200EA0DFF /* Collection+Safe.swift in Sources */,
 				7EC707712B4ABAF800EA0DFF /* ResultViewModel.swift in Sources */,
+				7EC707902B4ACF2A00EA0DFF /* OCRViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
