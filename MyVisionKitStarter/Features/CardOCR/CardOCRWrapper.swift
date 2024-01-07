@@ -22,5 +22,11 @@ struct CardOCRWrapper: UIViewControllerRepresentable {
         } else {
             uiViewController.turnOffTorch()
         }
+
+        if isAutoCapture {
+            uiViewController.turnOnAutoCapture()
+        } else {
+            uiViewController.turnOffAutoCapture()
+        }
     }
 }

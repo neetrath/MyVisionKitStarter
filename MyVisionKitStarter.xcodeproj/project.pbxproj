@@ -32,6 +32,7 @@
 		7EC707922B4ACF8800EA0DFF /* CardOCRWrapper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7EC707912B4ACF8800EA0DFF /* CardOCRWrapper.swift */; };
 		7EC707942B4AD1FE00EA0DFF /* OCRViewController+Flash.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7EC707932B4AD1FE00EA0DFF /* OCRViewController+Flash.swift */; };
 		7EC707982B4AD2F100EA0DFF /* OCRViewController+Overlay.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7EC707972B4AD2F100EA0DFF /* OCRViewController+Overlay.swift */; };
+		7EC7079A2B4AD50200EA0DFF /* OCRViewController+Motion.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7EC707992B4AD50200EA0DFF /* OCRViewController+Motion.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -62,6 +63,7 @@
 		7EC707912B4ACF8800EA0DFF /* CardOCRWrapper.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CardOCRWrapper.swift; sourceTree = "<group>"; };
 		7EC707932B4AD1FE00EA0DFF /* OCRViewController+Flash.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "OCRViewController+Flash.swift"; sourceTree = "<group>"; };
 		7EC707972B4AD2F100EA0DFF /* OCRViewController+Overlay.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "OCRViewController+Overlay.swift"; sourceTree = "<group>"; };
+		7EC707992B4AD50200EA0DFF /* OCRViewController+Motion.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "OCRViewController+Motion.swift"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -207,6 +209,7 @@
 			children = (
 				7EC7078F2B4ACF2A00EA0DFF /* OCRViewController.swift */,
 				7EC707932B4AD1FE00EA0DFF /* OCRViewController+Flash.swift */,
+				7EC707992B4AD50200EA0DFF /* OCRViewController+Motion.swift */,
 				7EC707972B4AD2F100EA0DFF /* OCRViewController+Overlay.swift */,
 			);
 			path = UIKit;
@@ -308,6 +311,7 @@
 				7EC7078B2B4ACC6700EA0DFF /* OCRCaptureState.swift in Sources */,
 				7EC7078C2B4ACC6700EA0DFF /* OCRDelegate.swift in Sources */,
 				7EC707722B4ABAF800EA0DFF /* CardOCRView.swift in Sources */,
+				7EC7079A2B4AD50200EA0DFF /* OCRViewController+Motion.swift in Sources */,
 				7EC707922B4ACF8800EA0DFF /* CardOCRWrapper.swift in Sources */,
 				7EC707522B4ABA9200EA0DFF /* MainCoordinator.swift in Sources */,
 				7EC7074C2B4ABA9200EA0DFF /* CGPoint+Scale.swift in Sources */,

@@ -1,4 +1,6 @@
 import AVFoundation
+import Combine
+import CoreMotion
 import UIKit
 import Vision
 
@@ -45,11 +47,34 @@ class OCRViewController: UIViewController {
         }
     }
 
+    private var anyCancellable: Set<AnyCancellable> = .init()
+
+    @Published var isStopShaking = true
+
+    var isShaking: Bool = false {
+        didSet {
+            if isShaking != oldValue {
+                if isShaking {
+                    resetStableTimer()
+                    isStopShaking = false
+                } else {
+                    startStableTimer()
+                }
+            }
+        }
+    }
+
+    let coreMotionManager = CMMotionManager()
+    var stableTimer: Timer?
+    let stableTime: Double = 2.0
+    let shakingThreshold: Double = 0.1
+
     override func viewDidLoad() {
         super.viewDidLoad()
 
         setupCamera()
         setupView()
+        setupObserver()
     }
 
     override func viewDidAppear(_ animated: Bool) {
@@ -124,6 +149,19 @@ class OCRViewController: UIViewController {
 
     @objc func doScan(sender: UIButton!) {
         isAllowCapture = true
+    }
+
+    private func setupObserver() {
+        $isStopShaking
+            .dropFirst()
+            .sink { [weak self] isStopShaking in
+                self?.isAllowCapture = isStopShaking
+            }
+            .store(in: &anyCancellable)
+    }
+
+    deinit {
+        stopAccelerometerUpdates()
     }
 
     private func setCameraInput() {
