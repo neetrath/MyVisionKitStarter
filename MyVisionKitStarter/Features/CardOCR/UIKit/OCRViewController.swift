@@ -1,5 +1,6 @@
 import AVFoundation
 import UIKit
+import Vision
 
 class OCRViewController: UIViewController {
     // Video capture
@@ -19,6 +20,30 @@ class OCRViewController: UIViewController {
     weak var delegate: OCRDelegate?
 
     var manualCaptureButton: UIButton!
+
+    private var cardCaptureState: OCRCaptureState = .notDetected {
+        didSet {
+            guard cardCaptureState != oldValue else {
+                return
+            }
+            switch cardCaptureState {
+            case .detected:
+                citizenCardLayer.strokeColor = configuration.detectedBorderColor.cgColor
+                citizenCardLayer.lineWidth = 4.0
+                photoFrameLayer.strokeColor = configuration.detectedBorderColor.cgColor
+                photoFrameLayer.lineWidth = 4.0
+                circleLayer.strokeColor = configuration.detectedBorderColor.cgColor
+                circleLayer.lineWidth = 4.0
+            case .notDetected:
+                citizenCardLayer.strokeColor = configuration.normalBorderColor.cgColor
+                citizenCardLayer.lineWidth = 2.0
+                photoFrameLayer.strokeColor = configuration.normalBorderColor.cgColor
+                photoFrameLayer.lineWidth = 2.0
+                circleLayer.strokeColor = configuration.normalBorderColor.cgColor
+                circleLayer.lineWidth = 2.0
+            }
+        }
+    }
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -144,6 +169,35 @@ class OCRViewController: UIViewController {
 
         connection.videoRotationAngle = 0.0
     }
+
+    private func doPerspectiveCorrection(_ observation: VNRectangleObservation, from buffer: CVImageBuffer) {
+        var ciImage = CIImage(cvImageBuffer: buffer)
+
+        let topLeft = observation.topLeft.scaled(to: ciImage.extent.size)
+        let topRight = observation.topRight.scaled(to: ciImage.extent.size)
+        let bottomLeft = observation.bottomLeft.scaled(to: ciImage.extent.size)
+        let bottomRight = observation.bottomRight.scaled(to: ciImage.extent.size)
+
+        // Calculate extra area outside the corners
+        let extraArea: CGFloat = 20.0
+        let topLeftWithMargin = CGPoint(x: topLeft.x - extraArea, y: topLeft.y + extraArea)
+        let topRightWithMargin = CGPoint(x: topRight.x + extraArea, y: topRight.y + extraArea)
+        let bottomLeftWithMargin = CGPoint(x: bottomLeft.x - extraArea, y: bottomLeft.y - extraArea)
+        let bottomRightWithMargin = CGPoint(x: bottomRight.x + extraArea, y: bottomRight.y - extraArea)
+
+        // Pass those to the filter to extract/rectify the image
+        ciImage = ciImage.applyingFilter("CIPerspectiveCorrection", parameters: [
+            "inputTopLeft": CIVector(cgPoint: topLeftWithMargin),
+            "inputTopRight": CIVector(cgPoint: topRightWithMargin),
+            "inputBottomLeft": CIVector(cgPoint: bottomLeftWithMargin),
+            "inputBottomRight": CIVector(cgPoint: bottomRightWithMargin),
+        ])
+
+        let context = CIContext()
+        if let cgImage = context.createCGImage(ciImage, from: ciImage.extent) {
+            delegate?.didReceive(cgImage: cgImage)
+        }
+    }
 }
 
 // MARK: - AVCaptureVideoDataOutputSampleBufferDelegate
@@ -154,8 +208,43 @@ extension OCRViewController: AVCaptureVideoDataOutputSampleBufferDelegate {
             print("unable to get image from sample buffer")
             return
         }
+        detectRectangle(in: frame)
+    }
+}
 
-        // TODO: Detect the card image.
-        // detectRectangle(in: frame)
+// MARK: - Dynamic overlay
+
+extension OCRViewController {
+    private func detectRectangle(in image: CVPixelBuffer) {
+        let request = VNDetectRectanglesRequest(completionHandler: { (request: VNRequest, _: Error?) in
+            DispatchQueue.main.async {
+                guard let results = request.results as? [VNRectangleObservation],
+                      let rect = results.first
+                else {
+                    self.cardCaptureState = .notDetected
+                    return
+                }
+
+                if rect.confidence > self.configuration.minimumConfidence {
+                    self.cardCaptureState = .detected
+                    if self.isAllowCapture {
+                        self.isAllowCapture = false
+                        self.doPerspectiveCorrection(rect, from: image)
+                    }
+                } else {
+                    self.cardCaptureState = .notDetected
+                }
+            }
+        })
+
+        request.minimumAspectRatio = VNAspectRatio(1.3) // This is the ratio of the card. Don't change it.
+        request.maximumAspectRatio = VNAspectRatio(1.6) // This is the ratio of the card. Don't change it.
+        request.quadratureTolerance = configuration.quadratureTolerance
+        request.minimumSize = configuration.minimumSize
+        request.minimumConfidence = configuration.minimumConfidence
+        request.maximumObservations = configuration.maximumObservations
+
+        let imageRequestHandler = VNImageRequestHandler(cvPixelBuffer: image, options: [:])
+        try? imageRequestHandler.perform([request])
     }
 }
