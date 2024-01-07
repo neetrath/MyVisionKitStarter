@@ -44,9 +44,7 @@ class CardOCRViewModel: ObservableObject {
             finalResults = values.map { OCRResult(key: "", value: $0) }
         }
 
-        DispatchQueue.main.asyncAfter(deadline: .now() + .seconds(1)) { [weak self] in
-            self?.onOCRSuccess.send(finalResults)
-        }
+        onOCRSuccess.send(finalResults)
     }
 }
 

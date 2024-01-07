@@ -27,6 +27,7 @@ struct CardOCRView: View {
             } label: {
                 Text("See the result")
             }
+            .buttonStyle(.borderedProminent)
 
             if viewModel.state == .loading {
                 Rectangle()
